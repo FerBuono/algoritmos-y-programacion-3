@@ -1,0 +1,54 @@
+Aporte de los mensajes de DD
+¿Cuántos mensajes polimórficos participan en un double dispatch (DD)? ¿Qué información aporta cada uno de ellos?
+
+RTA:
+Participan 2 mensajes polimorficos, el primer mensaje se envia al objeto receptor, el cual determina el tipo de objeto.
+El segundo mensaje se envia al objeto argumento y tambien determina el tipo de objeto.
+
+Lógica de instanciado
+Con lo que vieron y saben hasta ahora, ¿donde les parece mejor tener la lógica de cómo instanciar un objeto? 
+¿por qué? ¿Y si se crea ese objeto desde diferentes lugares y de diferentes formas? 
+¿cómo lo resuelven?
+
+RTA:
+
+El instanciar un objeto deberia implementarse en un solo lugar, para mantener una unica responsabilidad y tener
+coherencia al crear objetos. Una opcion valida seria en un metodo constructor.
+Si se crea el objeto de diferentes lugares habria que usar algo como inyeccion de dependencias, es decir
+que el objeto no se crea en el codigo que lo utiliza sino que se proporciona desde afuera.
+Tambien se puede usar un patron de diseño llamado abstract factory, que usa un metodo de fabrica para crear diferentes
+subtipos de objetos dependiendo sus caracteristicas.
+
+
+Nombres de las categorías de métodos
+Con lo que vieron y trabajaron hasta ahora, 
+¿Qué criterio están usando para categorizar métodos? 
+¿Cómo diferencian el protocolo externo de los mensajes que son solo para uso interno?
+
+RTA:
+Metodos publicos que son los que estan disponibles para los objetos que sean instancias de una clase y poder interactuar con ellos.
+Y metodos de clase que sirven para encapsular como funciona el objeto y su complejidad, estos vendrian a ser metodos privados.
+Para diferenciar el protocolo eexterno de los mensajes de uso interno, hay que ver como se utiliza el metodo en la clase
+y como se relaciona con las otras clases, los mensajes de uso interno se usan solo dentro de una clase.
+
+
+Subclass Responsibility
+Si todas las subclases saben responder un mismo mensaje, 
+¿Por qué ponemos ese mensaje sólo con un “self subclassResponsibility” en la superclase? 
+¿Para qué sirve? ¿Qué pasaría si no lo hacemos?
+
+RTA:
+El mensaje “self subclassResponsibility” sirve para redireccionar el mismo mensaje a las subclases, debido a que
+pueden tener una implementacion distinta, gracias al polimorfismo.
+Si no lo hacemos, deberiamos llenar de ifs la implementacion del metodo, o puede suceder que una subclase no tenga
+el metodo implementado, que podria traer errores en tiempo de ejecucion.
+
+No rompas
+¿Por qué está mal/qué problemas trae romper encapsulamiento?
+
+RTA:
+Si se rompe el encapsulamiento, se acceden a los detalles internos de implementacion desde afuera 
+de los objetos, cosas que al usuario no le interesa como lo funciona, sino que lo haga y ya.
+Al romper el encapsulamiento, se aumenta el acoplamiento y puede traer errores como dificultar
+la evolucion del codigo, errores al acceder al estado interno de un objeto y/o generar dependencias con otros objetos
+que no queremos tener y perder modularidad.
