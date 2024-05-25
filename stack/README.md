@@ -1,59 +1,123 @@
+# Stack Exercise
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/bsawMXWq)
-# Stack
 
-## Preludio
+## Introduction
 
-Esta parte es opcional pero altamente recomendada.
+In this exercise, you will implement and test a stack (LIFO) data structure. The project is divided into three parts:
 
-Como preludio de este ejercicio deberán implementar un stack y testearlo. Para ello, partirán del código inicial del archivo Stack-Preludio.st 
+1. **Preludio:** An optional but highly recommended warm-up to implement a basic stack.
+2. **Main Exercise:** Re-implement the stack from scratch based on provided tests.
+3. **Extensions:** Enhance the stack to handle additional constraints and functionalities.
 
-Nuestros desarrolladores se fueron de vacaciones y dejaron las cosas por la mitad, tenemos un solo test... ¡Y FALLA!
+## Preludio (Optional)
 
-Por lo menos armaron una lista de las cosas que querían probar:
-- que se pueda agregar un elemento (push)
-- que se pueda sacar un elemento (pop)
-- que el pop devuelve el último elemento
-- que el stack es LIFO (el último que agregas, sale primero) 
-- que se puede ver el último elemento sin removerlo
+### Objective
 
-La recomendación será hacer de a un test y hacerlo pasar de la forma más sencilla, usando ifs.
+Implement a basic stack and ensure it passes the provided tests.
 
+### Instructions
 
-## Primera Parte
+1. **Setup:**
+   - Perform a file-in of the `Stack-Preludio.st` file.
+   - Observe the single failing test and the provided list of features to implement.
 
+2. **Required Features:**
+   - Ability to push an element onto the stack.
+   - Ability to pop an element from the stack.
+   - Ensure `pop` returns the last pushed element.
+   - Ensure the stack follows LIFO (Last In, First Out) order.
+   - Ability to view the last element without removing it (`top`).
 
-Vamos a empezar de nuevo. Primero, hagan un file out del paquete que ya tenian y guárdenlo, habrá que incluírlo en la entrega. Luego, borren por completo el paquete Stack-Preludio (la primera de las columnas del browser).
+3. **Implementation:**
+   - Implement each feature iteratively.
+   - Use simple if-statements initially to pass the tests.
+   - Refactor the code to remove if-statements where possible.
 
-Hacer file in del archivo Stack-Exercise.st.
+## Main Exercise
 
-Se encontrarán con algunos tests que fallan, tendrán que reimplementar el stack a partir de ellos. 
+### Objective
 
-Les dejamos algunas ayudas: 
+Re-implement the stack and make all provided tests pass.
 
-1. Primero hagan pasar todos los tests usando if y después aplique la técnica para sacar if que vimos. 
-2. Si les sirve, utilicen una metáfora. Una muy útil es la de representar el juego de los bebés donde se apilan platos en una especie de torre de Hanoi.
-Importante: Tampoco se puede usar handleo de excepciones para ocultar lo que sería en definitiva un if.
+### Instructions
 
+1. **Setup:**
+   - File out the `Stack-Preludio` package and save it.
+   - Delete the `Stack-Preludio` package from your environment.
+   - Perform a file-in of the `Stack-Exercise.st` file.
 
-## Segunda Parte
+2. **Initial Tests:**
+   - Some tests will initially fail. Your task is to make them pass by re-implementing the stack.
 
+3. **Tips:**
+   - Start with simple if-statements to pass the tests.
+   - Apply techniques to refactor and remove if-statements.
 
-El stack de la primera parte es utilizado para almacenar oraciones de cualquier longitud. Se debe implementar el mensaje find de SentenceFinderByPrefix que dado un prefijo se encarga de devolver todas las oraciones almacenadas en el Stack que contengan dicho prefijo. Por ej. si el prefijo es "Wint", y las oraciones en el Stack son "winter is coming", "winning is everything", "The winds of Winter" y "Winter is here" sólo debería devolver la última. 
+## Second Part
 
-El prefijo es case-sensitive, no puede ser vacío, ni contener espacios vacíos y el stack al terminar la operación de búsqueda debe de mantener las mismas oraciones en idéntico orden. 
+### Objective
 
-Además de implementar "find", se debe testear dicha funcionalidad. Para ello escriba todos los tests que crea necesario en SentenceFinderByPrefixTest.
+Implement the `find` method in `SentenceFinderByPrefix` to find sentences with a specific prefix in the stack.
 
-Aclaración: No se pueden agregar mensajes adicionales al Stack en esta parte.
+### Requirements
 
+1. **Prefix Search:**
+   - The `find` method should return all sentences in the stack that begin with the given prefix.
+   - The prefix is case-sensitive, cannot be empty, and cannot contain spaces.
+   - The stack must maintain the same order of sentences after the search.
 
-## Extra
+2. **Tests:**
+   - Write tests for the `find` method in `SentenceFinderByPrefixTest`.
 
+### Implementation
 
-Se pide extender el modelo para que además de representar al stack ilimitado ya construido, se puedan construir instancias de un stack limitado. Es decir, uno de que tenga una cantidad limitada de celdas y que no se puedan pushear más elementos que los disponibles en su capacidad.
+1. **Setup:**
+   - Create instances of `SentenceFinderByPrefix` with test stacks.
+   - Implement the `find` method.
 
-Se pide además analizar cuál de los modelos descriptos en clase creen que es más sencillo extender para representarla y hacerlo. 
+2. **Testing:**
+   - Ensure comprehensive test coverage for various scenarios.
 
-Además se deberán agregar los casos de tests que hagan falta para probar el nuevo tipo de stack.
+## Extra (Optional)
 
-Aclaración: Pueden agregar mensajes adicionales al Stack en esta parte.
+### Objective
+
+Extend the stack model to support a limited capacity stack.
+
+### Requirements
+
+1. **Limited Capacity Stack:**
+   - Create a stack that has a fixed number of cells.
+   - Prevent pushing more elements than the stack's capacity allows.
+
+2. **Analysis and Implementation:**
+   - Analyze which model is simpler to extend.
+   - Implement the limited capacity stack based on your analysis.
+
+3. **Testing:**
+   - Write additional tests to cover the new stack type.
+
+## Implementation Details
+
+### Classes and Methods
+
+1. **OOStack:**
+   - `isEmpty`: Check if the stack is empty.
+   - `pop`: Remove and return the last element.
+   - `push`: Add an element to the stack.
+   - `size`: Return the number of elements in the stack.
+   - `top`: Return the last element without removing it.
+   - `checkIfStackIsEmpty`: Raise an error if the stack is empty.
+   - `updateState`: Update the state of the stack.
+
+2. **SentenceFinderByPrefix:**
+   - `find`: Return sentences starting with the given prefix.
+   - `initializeWith`: Initialize with a stack.
+
+3. **State, EmptyState, NotEmptyState:**
+   - Handle stack state transitions and errors.
+
+## Conclusion
+
+By following these steps and guidelines, you will successfully implement and extend a stack data structure, ensuring it meets various requirements and handles different scenarios robustly. Happy coding!

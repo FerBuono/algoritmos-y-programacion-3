@@ -1,68 +1,95 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/ZAxPycRi)
 # Números
 
-## Primera parte
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/ZAxPycRi)
 
-Hacer file-in del archivo Numeros-Parte1-Ejercicio.st.
+## Introduction
 
-Como se observa, contamos con una clase Numero que representa un modelo de números. En particular soporta operaciones de enteros y de fracciones.
-Contamos con una suite de tests que verifica una serie de operaciones básicas que soporta nuestro modelo.
+The purpose of this exercise is to refactor the provided code to eliminate any redundant code found in both the model and the tests. The model represents numbers and supports operations on integers and fractions.
 
-El objetivo de esta primera parte es quitar los ifs utilizando polimorfismo, aplicando el algoritmo que vimos en clase. 
+## Objective
 
-Los tests deben seguir pasando (sin modificarlos).
+- Identify and eliminate redundant code in the model and tests.
+- Maintain the functionality and correctness of the tests.
+- Implement additional arithmetic operations and the Fibonacci sequence.
+- Remove `if` statements by using polymorphism.
 
-## Segunda parte
+## First Part
 
-Para esta segunda parte, deben previamente quitar la categoría Numeros-Parte1-Ejercicio, y luego hacer file-in de Numeros-Parte2-Ejercicio.st.
+1. File-in the `Numeros-Parte1-Ejercicio.st` file.
+2. The provided class `Numero` represents a model of numbers, supporting integer and fraction operations.
+3. The suite of tests verifies basic operations supported by the model.
+4. The goal is to remove `if` statements using polymorphism, applying the algorithm discussed in class.
+5. Ensure all tests continue to pass without modifying them.
 
-Este segundo modelo presentado es una posible solución de la primera parte, pero agregando nuevas operaciones: resta, división y fibonacci.
+## Second Part
 
-Como podrán ver cuando corran los tests, hay varios que funcionan y son los correspondientes a cuando se opera aritméticamente entre números del mismo tipo, o sea entre enteros o entre fracciones. Los test que fallan son los relacionados a las operaciones entre números de distinto tipo, es decir, entre enteros y fracciones y viceversa.
+1. Remove the category `Numeros-Parte1-Ejercicio` and then **file-in** `Numeros-Parte2-Ejercicio.st`.
+2. This model is a possible solution to the first part, with added operations: subtraction, division, and Fibonacci.
+3. Some tests fail because they involve operations between different types of numbers (integers and fractions).
+4. Implement addition, subtraction, multiplication, and division between integers and fractions.
+5. Ensure the final solution has no `if` statements in the methods and all tests pass without modifications.
 
-El objetivo de este ejercicio es que implementen la suma, la resta, la multiplicación y la división entre números enteros y fraccionarios.
+## Fibonacci
 
-La solución final no debe tener if en los métodos que deben implementar y todos los test deben funcionar (sin ser modificados!).
+1. Take the replacement of `if` statements to the extreme by removing `if` statements from the `#fibonacci` method.
+2. The solution should use polymorphism to replace `if` statements.
 
-### Fibonacci
+## Steps to Follow
 
-Una vez finalizado todo lo anterior, se pide llevar al extremo el reemplazo de if por polimorfismo: Deben quitar los ifs de #fibonacci. 
+1. Debug the tests that work to understand the presented model. Analyze the classes `Numero`, `Entero`, and `Fraccion`.
+2. Implement the necessary changes using `if` statements until all tests pass.
+3. Replace the `if` statements with polymorphism using the algorithm discussed in class.
+4. Apply the same techniques to remove `if` statements from `#fibonacci`.
 
-Las soluciones a este desafío son muy interesantes y distintas para lenguajes de prototipación (ej. javascript) vs clasificación.
+## Additional Challenge (Optional)
 
-**Pasos a seguir:**
+1. Remove any remaining `if` statements initially present in the exercise (e.g., handling zero division, ensuring the denominator is not one).
+2. Implement solutions using patterns like double dispatch, dependency injection, or abstract factory.
 
-1. Antes de empezar a resolver el problema, debuggeen los tests que funcionan para entender cómo es el modelo que se está presentando. Analicen las clases Numero, Entero y Fraccion.
-2. Una vez que se sientan cómodos con el modelo, hagan pasar todos los tests implementando lo necesario utilizando ifs. 
-3. Una vez que los tests pasen, apliquen el algoritmo que vimos en clase para reemplazar if por polimorfismo.
-4. Por último, apliquen el algoritmo y las técnicas vistas en clase para quitar los ifs de #fibonacci.
+## Theoretical Questions
 
-Para la entrega, deben hacer file-out de la solución a esta segunda parte. No es necesario entregar la solución a la primera parte.
+### Contribution of DD Messages
 
-**Algunas aclaraciones:**
+1. **How many polymorphic messages participate in a double dispatch (DD)? What information does each provide?**
 
-- Las fracciones no pueden tener denominador 1. Fracciones con denominador 1 se asumen enteros.
-- Los enteros no pueden responder los mensajes #numerador y #denominador ya que no son fracciones.
-- Cuando se opera aritméticamente con enteros, verán que se utilizan las operaciones aritméticas provistas por el sistema. Esto es para que sea más performante.
+   **Answer:**
+   Two polymorphic messages participate in double dispatch. The first message is sent to the receiver object, determining its type. The second message is sent to the argument object, determining its type as well.
 
-## Desafío Adicional (opcional, no resta, sólo otorga puntos extra)
+### Instantiation Logic
 
-Aquellos que estén interesados en seguir llevando al extremo el reemplazo de if por polimorfismo (y practicar para el parcial), traten de sacar el resto los ifs que ya venían en el ejercicio inicialmente: Los tienen que ver con que no se puede dividir por cero, que el denominador no puede ser uno, etc... Los van a encontrar en #with:over:
+1. **Where is it best to place the logic for instantiating an object? Why? If the object is created from different places and in different ways, how do you solve it?**
 
+   **Answer:**
+   Instantiating an object should be implemented in one place to maintain single responsibility and consistency. This can be achieved in a constructor method. If created from different places, dependency injection can be used, or the abstract factory pattern can handle different subtypes' creation based on their characteristics.
 
-## Preguntas teóricas
+### Method Category Names
 
-### Aporte de los mensajes de DD
-¿Cuántos mensajes polimórficos participan en un double dispatch (DD)? ¿Qué información aporta cada uno de ellos?
+1. **What criteria are you using to categorize methods? How do you differentiate the external protocol from internal use messages?**
 
-### Lógica de instanciado
-Con lo que vieron y saben hasta ahora, ¿donde les parece mejor tener la lógica de cómo instanciar un objeto? ¿por qué? ¿Y si se crea ese objeto desde diferentes lugares y de diferentes formas? ¿cómo lo resuelven?
-
-### Nombres de las categorías de métodos
-Con lo que vieron y trabajaron hasta ahora, ¿Qué criterio están usando para categorizar métodos? ¿Cómo diferencian el protocolo externo de los mensajes que son solo para uso interno?
+   **Answer:**
+   Public methods are available for object instances to interact with them. Class methods encapsulate the object's functionality and complexity (private methods). Internal messages are used within a class, whereas the external protocol involves interaction between classes.
 
 ### Subclass Responsibility
-Si todas las subclases saben responder un mismo mensaje, ¿Por qué ponemos ese mensaje sólo con un “self subclassResponsibility” en la superclase? ¿Para qué sirve? ¿Qué pasaría si no lo hacemos?
 
-### No rompas
-¿Por qué está mal/qué problemas trae romper encapsulamiento?
+1. **If all subclasses know how to respond to the same message, why do we put that message only with "self subclassResponsibility" in the superclass? What purpose does it serve? What happens if we don't?**
+
+   **Answer:**
+   The "self subclassResponsibility" message redirects the same message to subclasses, allowing different implementations through polymorphism. Without it, the method would require many `if` statements, or a subclass might not implement the method, causing runtime errors.
+
+### Encapsulation
+
+1. **Why is breaking encapsulation problematic?**
+
+   **Answer:**
+   Breaking encapsulation allows external access to implementation details, increasing coupling and risking errors when accessing internal states. It complicates code evolution, introduces unwanted dependencies, and reduces modularity.
+
+## How to Run
+
+1. Clone the repository:
+   ```sh
+   git clone git@github.com:FerBuono/algoritmos-y-programacion-3.git
+   cd algoritmos-y-programacion-3/numeros
+    ```
+2. Ensure you have a Smalltalk environment set up.
+
+3. Load the .st files into your Smalltalk environment and run the tests to ensure they pass without any redundant code.
